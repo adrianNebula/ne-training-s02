@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package Data;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -19,8 +20,10 @@ public class XmlVehicleDao implements VehicleDAO{
         System.out.println("XmlVehicleDao.createVehicle: " + placa+ ", " + desc +", "+marca);
     
             try {
-            FileWriter myWriter = new FileWriter("/tmp/lab/"+placa+".txt");
-            myWriter.write(desc);
+            File fileToCreate = new File("/tmp/lab/xmlV");
+            fileToCreate.mkdir();
+            FileWriter myWriter = new FileWriter("/tmp/lab/xmlV/"+placa+".txt");
+            myWriter.write("Marca: "+ marca + "\nDescripcion : "+ desc);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {

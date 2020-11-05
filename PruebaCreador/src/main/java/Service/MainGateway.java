@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ServiceLayer;
+package Service;
 
-import BussinesLayer.userManager;
-import BussinesLayer.VehicleManager;
+import Bussines.userManager;
+import Bussines.VehicleManager;
 
 /**
  *
@@ -20,9 +20,9 @@ public class MainGateway {
      * @param desc
      * @param name
      */
-    public static  void createUser(String id, String desc, String name){      
+    public static  void createUser(String id, String desc, String name, String selectedType){      
         System.out.println("MainGateway.createUser: "+ id +", "+ desc +","+name);
-        userManager.getInstance().createUser(id, desc, name);
+        userManager.getInstance().createUser(id, desc, name,selectedType);
     }
     
     /**
@@ -31,9 +31,9 @@ public class MainGateway {
      * @param desc
      * @param marca
      */
-    public static  void createVehicle(String placa, String desc, String marca){      
+    public static  void createVehicle(String placa, String desc, String marca, String selectedType){      
         System.out.println("MainGateway.createVehicle: "+ placa +", "+ desc +","+marca);
-        VehicleManager.getInstance().createVehicle(placa, desc, marca);
+        VehicleManager.getInstance().createVehicle(placa, desc, marca, selectedType);
     
 }
 }    

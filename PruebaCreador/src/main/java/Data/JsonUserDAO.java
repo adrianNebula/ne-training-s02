@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package Data;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -12,15 +13,17 @@ import java.io.IOException;
  *
  * @author nesas-13
  */
-public class XmlUserDAO implements UserDAO  {
+public class JsonUserDAO implements UserDAO{
     
     @Override
     public void createUser(String id, String desc, String name) {
-        System.out.println("XmlUserDAO.createUser: " + id + ", " + desc +", "+name);
+        System.out.println("JsonUserDAO.createUser: " + id + ", " + desc +", "+name);
         try {
-            FileWriter myWriter = new FileWriter("/tmp/lab/"+id+".txt");
-            myWriter.write(desc);
-            myWriter.close();
+            File fileToCreate = new File("/tmp/lab/json");
+            fileToCreate.mkdir();
+            FileWriter myWriter = new FileWriter("/tmp/lab/json/"+id+".txt");
+            myWriter.write("Nombre : "+ name + "\nDescripcion : "+ desc);
+            myWriter.close();   
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");

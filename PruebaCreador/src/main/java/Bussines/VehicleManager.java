@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BussinesLayer;
+package Bussines;
 
-import DataLayer.DAOFactory;
-import DataLayer.VehicleDAO;
+import Data.DAOFactory;
+import Data.VehicleDAO;
 import TOOLS.Encryptor;
 
 /**
@@ -38,7 +38,7 @@ public class VehicleManager {
      * @param desc
      * @param marca
      */
-    public void createVehicle(String placa, String desc, String marca){
+    public void createVehicle(String placa, String desc, String marca, String selectedType){
         
         Encryptor aesWithCbc = new Encryptor()
                 .type(Encryptor.TYPES.AES)
@@ -55,10 +55,9 @@ public class VehicleManager {
         String encrypt2 = tripleDESnoCBC.encrypt(placa);
         
         
-            System.out.println("VehicleManager.createVehicle"+placa+","+desc+","+marca);
+    System.out.println("VehicleManager.createVehicle"+placa+","+desc+","+marca);
             
-            DAOFactory daoFactory = DAOFactory.getDAOFactory(Math.random() > 0.5 ? DAOFactory.JSON: DAOFactory.XML);
-        
+    DAOFactory daoFactory = DAOFactory.getDAOFactory(selectedType.equals("JSON") ? DAOFactory.JSON : DAOFactory.XML);        
                
         
         VehicleDAO vehicleDAO = daoFactory.getVehicleDAO();
